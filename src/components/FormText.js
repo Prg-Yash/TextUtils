@@ -20,13 +20,9 @@ export default function FormText(props) {
     SetText(event.target.value);
   }
   const onClickCopy=()=>{
-    const text= document.getElementById("exampleFormControlTextarea1");
+   
     
-    // Select the text inside the textarea
-    text.select();
-    
-    
-    navigator.clipboard.writeText(text.value)
+    navigator.clipboard.writeText(text)
     
     // console.log("Text copied to clipboard");
     
@@ -111,8 +107,8 @@ export default function FormText(props) {
       </div>
       <div className="container my-3" style={{color: props.mode==='light'? 'black':'white'}}>
         <h1 >Your Text Summary</h1>
-        <b>{(text.split(/\s+/).filter(word => word !== '')).length} words and {text.length} characters</b>
-        <p className="my-2"><b>{0.008*text.split(" ").length} read  time</b></p>
+        <b>{(text.split(/\s+/).filter((el)=>{return el.length!==0})).length} words and {text.length} characters</b>
+        <p className="my-2"><b>{0.008*text.split(/\s+/).filter((el)=>{return el.length!==0}).length} read  time</b></p>
       </div>
     </>
   );
